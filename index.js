@@ -69,10 +69,11 @@ async function action() {
 			const client = github.getOctokit(
       core.getInput("token", { required: true })
     );
-			console.log('11111');
-			console.log(owner);
-			console.log(`Unable to merge ${previous} in to ${active}`);
-			console.log(assignees);
+			console.log(client.issues);
+			const actor = github.getOctokit(
+      core.getInput("GITHUB_ACTOR", { required: true })
+    );
+			console.log(actor);
 			await client.issues.create({
 			  owner: owner,
 			  repo: repo,
