@@ -61,7 +61,10 @@ async function action() {
 		try {
 			//const githubToken = core.getInput('github_token', { required: true });
 			const body = '';
-			const assignees = GITHUB_ACTOR;
+			const assignees = core
+      .getInput('assignees')
+      .split('\n')
+      .filter(a => a !== '');
 
 			//const client = github.getOctokit(githubToken);
 			await octokit.issues.create({
