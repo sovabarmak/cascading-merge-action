@@ -66,8 +66,11 @@ async function action() {
       .split('\n')
       .filter(a => a !== '');
 
-			//const client = github.getOctokit(githubToken);
-			await octokit.issues.create({
+			const client = github.getOctokit(
+      core.getInput("token", { required: true })
+    );
+			console.log(client);
+			await client.issues.create({
 			  owner: owner,
 			  repo: repo,
 			  title: `Unable to merge ${previous} in to ${active}`,
