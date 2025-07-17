@@ -63,8 +63,8 @@ async function action() {
 			const body = '';
 			const assignees = GITHUB_ACTOR;
 
-			const client = github.getOctokit(githubToken);
-			await client.issues.create({
+			//const client = github.getOctokit(githubToken);
+			octokit.issues.create({
 			  owner: owner,
 			  repo: repo,
 			  title: `Unable to merge ${previous} in to ${active}`,
