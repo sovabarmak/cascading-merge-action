@@ -63,8 +63,8 @@ async function action() {
 			const body = '';
 			const assignees = GITHUB_ACTOR;
 
-			//const client = github.getOctokit(githubToken);
-			octokit.issues.create({
+			const client = github.getOctokit(githubToken);
+			await client.issues.create({
 			  owner: owner,
 			  repo: repo,
 			  title: `Unable to merge ${previous} in to ${active}`,
@@ -92,24 +92,3 @@ if (require.main === module) {
 }
 
 module.exports = action;
-
-function viv_create_issue(title='failed merge'){
- try {
-    const githubToken = core.getInput('github_token', { required: true });
-    const owner = github.context.repo.owner;
-    const repo = github.context.repo.repo;
-    const body = '';
-    const assignees = GITHUB_ACTOR;
-
-    const client = github.getOctokit(githubToken);
-    await client.issues.create({
-      owner: owner,
-      repo: repo,
-      title: title,
-      assignees: assignees
-    });
-  } catch (e) {
-    core.error(e);
-    core.setFailed(e.message);
-  }	
-}
