@@ -59,7 +59,7 @@ async function action() {
       } catch (e) {
         console.log(e);
 		try {
-			const githubToken = core.getInput('github_token', { required: true });
+			//const githubToken = core.getInput('github_token', { required: true });
 			const body = '';
 			const assignees = GITHUB_ACTOR;
 
