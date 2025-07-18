@@ -69,7 +69,7 @@ async function action() {
 			const client = github.getOctokit(
       core.getInput("token", { required: true })
     );
-			console.log(${github.actor });
+			console.log(github.actor);
 
 			await client.rest.issues.create({
 			  owner: owner,
