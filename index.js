@@ -61,7 +61,7 @@ async function action() {
 		try {
 			//const githubToken = core.getInput('github_token', { required: true });
 			const body = '';
-			const assignees = github.context.actor;
+			const assignees = [github.context.actor];
 
 			const client = github.getOctokit(
       core.getInput("token", { required: true })
